@@ -4,9 +4,13 @@ use Bailador;
 get '/' => sub {
     template("index.tmpl", {
         title      => 'Perl 6 Bailador based TODO',
-        site_title => 'TODO',
     });
 }
+
+get '/about' => sub {
+    template("about.tmpl");
+}
+
 
 baile();
 

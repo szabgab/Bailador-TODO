@@ -1,0 +1,11 @@
+% my (%h) = @_;
+% %h<title> = 'About the Perl 6 Bailador based TODO';
+
+<%= Template::Mojo.new(slurp "views/incl/header.tmpl").render(%h); %>
+
+Developed for the <a href="http://perl6maven.com/book">Bailador book</a>.
+<br>
+Source code in <a href="">GitHub</a>
+
+<%= Template::Mojo.new(slurp "views/incl/footer.tmpl").render(%h); %>
+
