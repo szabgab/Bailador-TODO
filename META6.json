@@ -1,0 +1,19 @@
+{
+    "name"        : "BailadorTODO",
+    "version"     : "*",
+    "perl"        : "6.c",
+    "description" : "Sample TODO web applications using Bailador",
+    "depends"     : [ "Bailador", "Bailador::Dev::AutoRestarter", "Bailador::Plugin::Static"  ],
+    "tags"        : [ "Web", "HTTP", "Net" ],
+    "license"     : "MIT",
+    "provides" : {
+    },
+    "authors" : [
+        "Gabor Szabo"
+    ],
+    "support" : {
+        "bugtracker" : "https://github.com/ufobat/Bailador/issues",
+        "source" : "git://github.com/ufobat/Bailador.git"
+    },
+    "source-url"  : "git://github.com/ufobat/Bailador.git"
+}

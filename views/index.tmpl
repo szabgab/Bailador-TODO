@@ -1,0 +1,7 @@
+% my (%h) = @_;
+
+<%= Template::Mojo.new(slurp "views/incl/header.tmpl").render(%h); %>
+
+hello
+
+<%= Template::Mojo.new(slurp "views/incl/footer.tmpl").render(%h); %>

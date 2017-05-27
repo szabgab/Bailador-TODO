@@ -2,8 +2,13 @@ use v6;
 use Bailador;
 
 get '/' => sub {
-    "Welcome to the TODO list";
+    template("index.tmpl", {
+        title      => 'Perl 6 Bailador based TODO',
+        site_title => 'TODO',
+    });
 }
 
-
 baile();
+
+# vim: expandtab
+# vim: tabstop=4
