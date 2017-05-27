@@ -3,7 +3,7 @@
     "version"     : "*",
     "perl"        : "6.c",
     "description" : "Sample TODO web applications using Bailador",
-    "depends"     : [ "Bailador", "Bailador::Dev::AutoRestarter", "Bailador::Plugin::Static"  ],
+    "depends"     : [ "Bailador", "Bailador::Dev::AutoRestarter", "Bailador::Plugin::Static", "JSON::Fast" ],
     "tags"        : [ "Web", "HTTP", "Net" ],
     "license"     : "MIT",
     "provides" : {

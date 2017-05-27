@@ -2,6 +2,13 @@
 
 <%= Template::Mojo.new(slurp "views/incl/header.tmpl").render(%h); %>
 
-hello 
+
+<form action="/add" method="POST">
+  <div class="form-group">
+    <label for="text">Add TODO Item</label>
+    <input type="text" id="text" name="text">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
 
 <%= Template::Mojo.new(slurp "views/incl/footer.tmpl").render(%h); %>
