@@ -3,7 +3,7 @@
     "version"     : "*",
     "perl"        : "6.c",
     "description" : "Sample TODO web applications using Bailador",
-    "depends"     : [ "Bailador", "Bailador::Dev::AutoRestarter", "Bailador::Plugin::Static", "JSON::Fast" ],
+    "depends"     : [ "Bailador", "JSON::Fast" ],
     "tags"        : [ "Web", "HTTP", "Net" ],
     "license"     : "MIT",
     "provides" : {
@@ -12,8 +12,8 @@
         "Gabor Szabo"
     ],
     "support" : {
-        "bugtracker" : "https://github.com/ufobat/Bailador/issues",
-        "source" : "git://github.com/ufobat/Bailador.git"
+        "bugtracker" : "https://github.com/szabgab/Bailador-TODO/issues",
+        "source" : "git://github.com/szabgab/Bailador-TODO.git"
     },
-    "source-url"  : "git://github.com/ufobat/Bailador.git"
+    "source-url"  : "git://github.com/szabgab/Bailador-TODO.git"
 }
