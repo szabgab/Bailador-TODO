@@ -24,7 +24,8 @@ post '/add' => sub {
     my $text = request.params<text> // '';
     if $text ~~ /\</ {
         return template('error.html', {
-            message => 'Invalid character &lt;';
+            title   => 'Invalid character &lt;',
+            message => 'Invalid character &lt;',
         });
     }
     store($text);

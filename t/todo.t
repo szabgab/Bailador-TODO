@@ -4,7 +4,7 @@ use File::Temp;
 
 use Bailador::Test;
 
-plan 3;
+plan 4;
 
 %*ENV<TODO_ROOT> = tempdir();
 %*ENV<P6W_CONTAINER> = 'Bailador::Test';
@@ -47,6 +47,35 @@ subtest {
         like $html, rx:s/hello world/;
     };
 }, '/add';
+
+subtest {
+    plan 2;
+
+    subtest {
+        plan 3;
+        my %data = run-psgi-request($app, 'POST', '/add', "text=foo < barbar");
+        my $html = %data<response>[2];
+        %data<response>[2] = '';
+        is-deeply %data<response>, [200, ["Content-Type" => "text/html"], ''], 'route POST /add';
+        is %data<err>, '';
+        like $html, rx:s/\<h3 id\=\"error\"\>Invalid character \&lt\;\<\/h3\>/;
+    };
+
+    subtest {
+        plan 6;
+
+        my %data = run-psgi-request($app, 'GET', '/');
+        my $html = %data<response>[2];
+        %data<response>[2] = '';
+        is-deeply %data<response>, [200, ["Content-Type" => "text/html"], ''], 'route GET /';
+        is %data<err>, '';
+        like $html, rx:s/\<title\>Perl 6 Bailador based TODO\<\/title\>/;
+        like $html, rx:s/hello world/;
+        unlike $html, rx:s/foo/;
+        unlike $html, rx:s/barbar/;
+    };
+}, '/add';
+
 
 
 subtest {
