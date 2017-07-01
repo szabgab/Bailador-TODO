@@ -10,7 +10,7 @@ if %*ENV<TODO_ROOT> {
 
 get '/' => sub {
     my @todo = read_list();
-    template("index.tmpl", {
+    template("index.html", {
         title      => 'Perl 6 Bailador based TODO',
         list       => @todo,
     });
@@ -28,13 +28,13 @@ post '/add' => sub {
         });
     }
     store($text);
-    template("added.tmpl", {
+    template("added.html", {
         title      => 'Perl 6 Bailador based TODO',
     });
 }
 
 get '/about' => sub {
-    template("about.tmpl");
+    template("about.html");
 }
 
 sub store(Str $text) {
