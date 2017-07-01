@@ -4,6 +4,9 @@ use JSON::Fast;
 
 my $root = $*PROGRAM-NAME.IO.absolute.IO.dirname.IO.dirname;
 my $db   = $root.IO.child("todo.json");
+if %*ENV<TODO_ROOT> {
+    $db = %*ENV<TODO_ROOT>.IO.child('todo.json');
+}
 
 get '/' => sub {
     my @todo = read_list();

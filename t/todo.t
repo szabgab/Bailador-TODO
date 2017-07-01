@@ -1,9 +1,12 @@
 use v6.c;
 use Test;
+use File::Temp;
+
 use Bailador::Test;
 
 plan 2;
 
+%*ENV<TODO_ROOT> = tempdir();
 %*ENV<P6W_CONTAINER> = 'Bailador::Test';
 my $app = EVALFILE "bin/app.pl6";
 

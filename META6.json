@@ -3,7 +3,7 @@
     "version"     : "*",
     "perl"        : "6.c",
     "description" : "Sample TODO web applications using Bailador",
-    "depends"     : [ "Bailador", "JSON::Fast" ],
+    "depends"     : [ "Bailador", "JSON::Fast", "File::Temp" ],
     "tags"        : [ "Web", "HTTP", "Net" ],
     "license"     : "MIT",
     "provides" : {
