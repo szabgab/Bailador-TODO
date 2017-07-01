@@ -4,17 +4,42 @@
 
 
 <form action="/add" method="POST">
+  <h2>Add TODO Item</h2>
   <div class="form-group">
-    <label for="text">Add TODO Item</label>
+    <label for="text">Title</label>
     <input type="text" id="text" name="text">
+  </div>
+  <div class="form-group">
+    <label for="details">Details</label>
+    <textarea id="details" name="details"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="due_date">Due Date</label>
+    <input type="date" id="due_date" name="due_date">
+  </div>
+  <div class="form-group">
+    <label for="priority">Priority</label>
+    <select id="priority" name="priority">
+       <option value="top">Top</option>
+       <option value="high">High</option>
+       <option value="low">Low</option>
+       <option value="" selected></option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select id="status" name="status">
+       <option value="done">DONE</option>
+       <option value="waiting" selected>Waiting</option>
+    </select>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
 <table>
-    <tr><th>Item</th><th>Added</th></tr>
+    <tr><th>Item</th><th>Added</th><th>Details</td><th>Status</th><th>Priority</th><th>Due</th></tr>
 % for %h<list>.list -> $e {
-    <tr><td><%= $e<text> %></td><td></td></tr>  
+    <tr><td><%= $e<text> %></td><td><%= $e<added> %></td><td><%= $e<details> %></td><td><%= $e<status> %></td><td><%= $e<priority> %></td><td><%= $e<due> %></td></tr>  
 %}
 </table>
 

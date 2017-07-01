@@ -23,13 +23,18 @@ post '/add' => sub {
 
     my $text = request.params<text> // '';
     $text .= trim;
-    if $text ~~ /\</ {
+    my $details = request.params<details> // '';
+    if $text ~~ /\</ or $details ~~ /\</ {
         return template('error.html', {
             title   => 'Invalid character &lt;',
             message => 'Invalid character &lt;',
         });
     }
-    store($text);
+    # TODO: Use Perl 6 type checking for validation
+    my $due = request.params<due_date> // '';      # TODO: Check date string
+    my $priority = request.params<priority> // ''; # TODO: Check against list
+    my $status = request.params<status> // '';     # TODO: Check against list
+    store($text, $details, $due, $priority, $status);
     template("added.html", {
         title      => 'Perl 6 Bailador based TODO',
     });
@@ -39,15 +44,19 @@ get '/about' => sub {
     template("about.html");
 }
 
-sub store(Str $text) {
+sub store(Str $text, Str $details, Str $due, Str $priority, Str $status) {
     my @todo;
     if $db.e {
         @todo = read_list();
     }
 
     @todo.push: {
-        text => $text,
-        added => time,
+        text     => $text,
+        details  => $details,
+        due      => $due,
+        priority => $priority,
+        status   => $status,
+        added    => time,
     };
     my $json_str = to-json @todo;
 
