@@ -22,12 +22,13 @@ subtest {
     unlike $html, rx:s/hello world/;
 }, '/';
 
+# simple add, trimp leading and trailing spaces
 subtest {
     plan 2;
 
     subtest {
         plan 3;
-        my %data = run-psgi-request($app, 'POST', '/add', "text=hello%20world");
+        my %data = run-psgi-request($app, 'POST', '/add', "text=%20%20hello%20world%20%20");
         my $html = %data<response>[2];
         %data<response>[2] = '';
         is-deeply %data<response>, [200, ["Content-Type" => "text/html"], ''], 'route POST /add';

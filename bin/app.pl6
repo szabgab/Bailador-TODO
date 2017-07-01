@@ -22,6 +22,7 @@ post '/add' => sub {
     }
 
     my $text = request.params<text> // '';
+    $text .= trim;
     if $text ~~ /\</ {
         return template('error.html', {
             title   => 'Invalid character &lt;',
