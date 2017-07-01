@@ -1,0 +1,8 @@
+% my (%h) = @_;
+
+<%= Template::Mojo.new(slurp "views/incl/header.tmpl").render(%h); %>
+
+<h3 id="error"><%= %h<message> %></h3>
+
+<%= Template::Mojo.new(slurp "views/incl/footer.tmpl").render(%h); %>
+

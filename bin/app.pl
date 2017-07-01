@@ -15,6 +15,11 @@ get '/' => sub {
 
 post '/add' => sub {
     my $text = request.params<text>;
+    if $text ~~ /\</ {
+        return template('error.html', {
+            message => 'Invalid character &lt;';
+        });
+    }
     store($text);
     template("added.tmpl", {
         title      => 'Perl 6 Bailador based TODO',
