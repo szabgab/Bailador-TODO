@@ -44,10 +44,11 @@ subtest {
         is-deeply %data<response>, [200, ["Content-Type" => "text/html"], ''], 'route GET /';
         is %data<err>, '';
         like $html, rx:s/\<title\>Perl 6 Bailador based TODO\<\/title\>/;
-        like $html, rx:s/hello world/;
+        like $html, rx:s/\<td\>hello world\<\/td\>/;
     };
 }, '/add';
 
+# test that < is not an accepted character
 subtest {
     plan 2;
 
