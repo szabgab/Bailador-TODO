@@ -14,7 +14,11 @@ get '/' => sub {
 }
 
 post '/add' => sub {
-    my $text = request.params<text>;
+    if not request.params<text>.defined {
+        return template('error.html', { message => 'Missing input' });
+    }
+
+    my $text = request.params<text> // '';
     if $text ~~ /\</ {
         return template('error.html', {
             message => 'Invalid character &lt;';
@@ -48,6 +52,7 @@ sub store(Str $text) {
 }
 
 sub read_list() {
+    return () if not $db.e;
     my $json_str = $db.slurp: :close;
     my @todo = | from-json $json_str;
     return @todo;
